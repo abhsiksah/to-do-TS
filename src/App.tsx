@@ -8,7 +8,9 @@ function App() {
   const [todo, setTodo] = useState<string>("");
 
   const [todos, setTodos] = useState<Array<Todo>>(
-    JSON.parse(window.localStorage.getItem("localData") as string)
+    window.localStorage.getItem("localData") !== null
+      ? JSON.parse(window.localStorage.getItem("localData") || "")
+      : []
   );
 
   const checkFromLocalStorage = useCallback(() => {
