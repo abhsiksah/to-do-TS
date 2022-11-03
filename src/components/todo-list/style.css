@@ -9,3 +9,12 @@
     gap: 70px;
 
 }
+
+@media (max-width: 800px) {
+
+    .todo-list-container {
+        width: 80%;
+
+
+    }
+}
