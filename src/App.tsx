@@ -1,12 +1,23 @@
-import React, { useState } from 'react';
-import './App.css';
-import InputField from './components/inputfield/InputField';
-import TodoList from './components/todo-list/TodoList';
-import { Todo } from './models/model';
+import React, { useEffect, useState, useCallback } from "react";
+import "./App.css";
+import InputField from "./components/inputfield/InputField";
+import TodoList from "./components/todo-list/TodoList";
+import { Todo } from "./models/model";
 
 function App() {
   const [todo, setTodo] = useState<string>("");
-  const [todos, setTodos] = useState<Array<Todo>>([]);
+
+  const [todos, setTodos] = useState<Array<Todo>>(
+    JSON.parse(window.localStorage.getItem("localData") as string)
+  );
+
+  const checkFromLocalStorage = useCallback(() => {
+    window.localStorage.setItem("localData", JSON.stringify(todos));
+  }, [todos]);
+
+  useEffect(() => {
+    checkFromLocalStorage();
+  }, [todos]);
 
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,8 +27,6 @@ function App() {
       setTodo("");
     }
   };
-
-
 
   return (
     <div className="App">
