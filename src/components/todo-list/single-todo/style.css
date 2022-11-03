@@ -116,3 +116,21 @@
 .display-none {
     display: none;
 }
+
+@media (max-width: 800px) {
+    .single-todo-body {
+        height: 450px;
+        width: 300px;
+        background-color: rgb(124, 124, 124);
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 600;
+        color: #333;
+        box-shadow: 0 0 10px black;
+
+    }
+}
